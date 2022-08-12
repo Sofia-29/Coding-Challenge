@@ -31,13 +31,13 @@ def linear_multiple_regression_controller():
     test_data_target = model.get_test_data_targets()
 
     print("Mean squared error using validation data: " + str(model.get_mean_squared_error(predicted_data, validation_data_target)))
-    print("Mean squared error using test data: " + str(model.get_mean_squared_error(predicted_data_test, test_data_target)))
+    mse_test_data = round(model.get_mean_squared_error(predicted_data_test, test_data_target), 4)
 
-    graph.setup_plot(predicted_data_test, test_data_target, 
-        "Iris Species" + "\n" + "Iris Setosa = 0 Iris Versicolor = 1 Iris Virginica = 2", "True values", "Predicted values values")
+    graph.setup_plot(test_data, test_data_target, predicted_data_test, 
+       "Iris Species" + "\n" + "Iris Setosa = 0 Iris Versicolor = 1 Iris Virginica = 2 \n Mean squared error using test data: " + str(mse_test_data),
+        "Iris id", "Predicted values")
     
     graph.show_plot()
-    return
 
 
 def logistic_regression_controller():
@@ -48,7 +48,6 @@ def logistic_regression_controller():
     model  = RegressionModel(logistic_regression_model)
 
     dataset = datasets.load_breast_cancer()
-    #data = dataset.data[1:] #all columns except id
 
     #split data intro traning (70 %), validation(15 %) and test data(15 %)
     model.split_data(dataset.data, dataset.target, 0.70, 0.15, 0.15)
@@ -65,10 +64,10 @@ def logistic_regression_controller():
     test_data_target = model.get_test_data_targets()
 
     print("F1 score using validation data: " + str(model.get_f1_score(predicted_data, validation_data_target)))
-    print("F1 score error using test data: " + str(model.get_f1_score(predicted_data_test, test_data_target)))
+    f1_score = round(model.get_f1_score(predicted_data_test, test_data_target), 4)
 
     confusion_matrix = model.get_confusion_matrix(predicted_data_test, test_data_target)
-    graph.setup_heatmap(confusion_matrix, "Breast cancer dataset prediction analysis")
+    graph.setup_heatmap(confusion_matrix, "Breast cancer dataset prediction analysis \n F1 Score using test data: " + str(f1_score))
     graph.get_heatmap()
 
 
