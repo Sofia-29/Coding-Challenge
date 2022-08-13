@@ -1,0 +1,33 @@
+{% extends 'model_view/base.html' %}
+
+{% block content %} 
+
+  <style>
+      figure{
+        display: inline-block;
+      }
+  </style>
+
+  {% if model_type %}
+    <h1 class="mt-2">Regression model results</h1>
+  {% else %}
+    <h1 class="mt-2">Classification model results</h1>
+  {% endif %}
+
+  <hr class="mt-0 mb-4">
+
+  <div align="center">
+    {% if chart_test %}
+      <figure>
+        <img src="data:image/png;base64, {{chart_test|safe}}" alt='missing'>
+      </figure>  
+    {% endif %}
+
+    {% if chart_validation %}
+      <figure>
+        <img src="data:image/png;base64, {{chart_validation|safe}}" alt='missing'>
+      </figure>
+    {% endif %}
+  </div>
+
+{% endblock %}
