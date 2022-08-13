@@ -25,7 +25,7 @@ class Graphs:
 
         '''
         plt.switch_backend('AGG')
-        plt.figure(figsize=(4, 4))
+        plt.figure(figsize=(5, 5))
         plt.scatter(np.arange(0, len(x_axis_data), 1), y_axis_data, color = 'black')
         plt.plot(np.arange(0, len(x_axis_data), 1), predicted_data, color = "green")
         plt.title(title)
@@ -49,7 +49,7 @@ class Graphs:
             title:str, title of graph
         '''
         plt.switch_backend('AGG')
-        plt.figure(figsize=(4, 4))
+        plt.figure(figsize=(3, 3))
         matrix_display = ConfusionMatrixDisplay(confusion_matrix = matrix, display_labels = [False, True])
         matrix_display.plot(cmap='Greens')
         plt.title(title)
