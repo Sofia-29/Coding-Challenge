@@ -10,7 +10,7 @@ def index(response):
     if response.method == 'POST':   
         form = DataForm(response.POST, response.FILES)
         if form.is_valid(): 
-            data = form.cleaned_data["data"]
+            data = form.cleaned_data["data"] 
             targets = form.cleaned_data["targets"]
             model_type = form.cleaned_data["model_type"]
             file_system = FileSystemStorage()

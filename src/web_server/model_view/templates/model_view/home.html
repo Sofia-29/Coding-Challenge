@@ -5,10 +5,29 @@
     <h1 class="mt-2">Regression Model</h1>
     <hr class="mt-0 mb-4">
 
-    <form enctype="multipart/form-data" method="post" action=''>
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit", value="Submit">
+    <form enctype="multipart/form-data" method="post" action='' class="form-group">
+        {% csrf_token %} 
+            <h6> Select a file containing x or features data: </h6>
+            <div class="custom-file">
+                {{form.data }} 
+                <label for="data" class="custom-file-label" for="customFileLang"></label>
+            </div>
+            <p></p>
+            
+            <h6> Select a file containing y or labels data: </h6>
+            <div class="custom-file">
+                {{form.targets }} 
+                <label for="data" class="custom-file-label" for="customFileLang"></label>
+            </div>
+            <p></p>
+            <h6> Choose a model type: </h6>
+            <div>
+                {{form.model_type}}
+            </div>
+            <p></p>
+
+            <button type="submit", name="Submit" class="btn btn-success">Submit</button>
+
     </form>
 
 {% endblock %}
