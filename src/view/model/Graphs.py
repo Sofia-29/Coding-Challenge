@@ -1,4 +1,6 @@
+import base64
 from cProfile import label
+from io import BytesIO
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay
 import numpy as np
@@ -22,6 +24,8 @@ class Graphs:
             y_label:str, y label of graph
 
         '''
+        plt.switch_backend('AGG')
+        plt.figure(figsize=(4, 4))
         plt.scatter(np.arange(0, len(x_axis_data), 1), y_axis_data, color = 'black')
         plt.plot(np.arange(0, len(x_axis_data), 1), predicted_data, color = "green")
         plt.title(title)
@@ -44,6 +48,8 @@ class Graphs:
             y_axis_data, list containing y axis data
             title:str, title of graph
         '''
+        plt.switch_backend('AGG')
+        plt.figure(figsize=(4, 4))
         matrix_display = ConfusionMatrixDisplay(confusion_matrix = matrix, display_labels = [False, True])
         matrix_display.plot(cmap='Greens')
         plt.title(title)
@@ -54,4 +60,16 @@ class Graphs:
         '''
         plt.show()
     
-    
+    def get_graph(self):
+        '''
+            Returns graph previously set as an image
+        '''
+        plt.tight_layout()
+        buffer = BytesIO()
+        plt.savefig(buffer, format='png')
+        buffer.seek(0)
+        image_png = buffer.getvalue()
+        graph = base64.b64encode(image_png)
+        graph = graph.decode('utf-8')
+        buffer.close()
+        return graph

@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block content %} 
+
+  <style>
+      figure{
+        display: inline-block;
+      }
+  </style>
+
+  <div align="center">
+    {% if chart_test %}
+      <figure>
+        <img src="data:image/png;base64, {{chart_test|safe}}" alt='missing'>
+      </figure>  
+    {% endif %}
+
+    {% if chart_validation %}
+      <figure>
+        <img src="data:image/png;base64, {{chart_validation|safe}}" alt='missing'>
+      </figure>
+    {% endif %}
+  </div>
+
+{% endblock %}
