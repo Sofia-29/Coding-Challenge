@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'model_view/base.html' %}
 
 {% block content %} 
 
@@ -7,6 +7,14 @@
         display: inline-block;
       }
   </style>
+
+  {% if model_type %}
+    <h1 class="mt-2">Regression model results</h1>
+  {% else %}
+    <h1 class="mt-2">Classification model results</h1>
+  {% endif %}
+
+  <hr class="mt-0 mb-4">
 
   <div align="center">
     {% if chart_test %}

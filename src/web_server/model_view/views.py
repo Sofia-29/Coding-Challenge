@@ -18,11 +18,11 @@ def index(response):
             file_system.save(targets.name, targets)
             controller = Controller()
             graph_test, graph_validation = controller.model_controller(data.name, targets.name, model_type)
-            
-            return render(response, "main/results.html", {"chart_test": graph_test, "chart_validation":graph_validation})
+            model_type = True if model_type == "1" else False
+            return render(response, "model_view/results.html", {"model_type":model_type,"chart_test": graph_test, "chart_validation":graph_validation})
     else:
         form = DataForm()
-    return render(response, "main/home.html", {"form":form})
+    return render(response, "model_view/home.html", {"form":form})
 
 def results(response):
-    return render(response, "main/results.html", {})
+    return render(response, "model_view/results.html", {})

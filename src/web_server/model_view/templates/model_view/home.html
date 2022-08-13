@@ -1,9 +1,14 @@
-{% extends 'main/base.html' %}
+{% extends 'model_view/base.html' %}
 
 {% block content %}
+
+    <h1 class="mt-2">Regression Model</h1>
+    <hr class="mt-0 mb-4">
+
     <form enctype="multipart/form-data" method="post" action=''>
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit", value="Submit">
     </form>
+
 {% endblock %}
