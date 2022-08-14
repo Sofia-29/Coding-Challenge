@@ -10,15 +10,32 @@
             <h6> Select a file containing x or features data: </h6>
             <div class="custom-file">
                 {{form.data }} 
-                <label for="data" class="custom-file-label" for="customFileLang"></label>
+                <label class="custom-file-label" for="id_data"></label>
             </div>
             <p></p>
-            
+
+            <script>
+                $('#id_data').on('change', function(){
+                    var fileName = $(this).val();
+                    fileName = fileName.replace('C:\\fakepath\\', "");
+                    $(this).next('.custom-file-label').html(fileName);
+                })
+            </script>
+
             <h6> Select a file containing y or labels data: </h6>
             <div class="custom-file">
                 {{form.targets }} 
-                <label for="data" class="custom-file-label" for="customFileLang"></label>
+                <label for="target" class="custom-file-label" for="id_targets"></label>
             </div>
+
+            <script>
+                $('#id_targets').on('change', function(){
+                    var fileName = $(this).val();
+                    fileName = fileName.replace('C:\\fakepath\\', "");
+                    $(this).next('.custom-file-label').html(fileName);
+                })
+            </script>
+
             <p></p>
             <h6> Choose a model type: </h6>
             <div>

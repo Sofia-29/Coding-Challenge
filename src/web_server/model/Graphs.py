@@ -1,5 +1,4 @@
 import base64
-from cProfile import label
 from io import BytesIO
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay
