@@ -49,7 +49,13 @@ class Graphs:
         '''
         plt.switch_backend('AGG')
         plt.figure(figsize=(3, 3))
-        matrix_display = ConfusionMatrixDisplay(confusion_matrix = matrix, display_labels = [False, True])
+        display = []
+        for index in range(len(matrix)):
+            if index % 2 == 0:
+                display.append(False)
+            else:
+                display.append(True)
+        matrix_display = ConfusionMatrixDisplay(confusion_matrix = matrix, display_labels = display)
         matrix_display.plot(cmap='Greens')
         plt.title(title)
 
