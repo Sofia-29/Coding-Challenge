@@ -10,6 +10,17 @@ class Controller:
         pass
 
     def model_controller(self, data_name:str, target_name:str, model_type:str):
+        '''
+            Fits, predicts data to the model. 
+
+            PARAMS
+
+            data_name:str, name of the file where the data features are
+            target_name:str,  name of the file where the data targets are
+            model_type:str, type of model choosen by the user
+
+        '''
+
         model = None
         file_manager = FileManager.FileManager()
         if model_type == "1":
@@ -55,11 +66,31 @@ class Controller:
         return graph_test, graph_validation
 
     def __show_plot(self, text:str, data:list, predicted_data:list, targets:list):
+        '''
+            Setup plot for showing data
+
+            PARAMS
+
+            data:list, list containing data features
+            predicted_data, list containing predicted data
+            targets:list, list containing target data
+            title:str, title of graph
+
+        '''
         graph = Graphs.Graphs()
         graph.setup_plot(data, targets, predicted_data, text, "Data ID", "Predicted values")
         return graph.get_graph()
 
     def __show_heatmap(self, text:str, confusion_matrix:list):
+        '''
+            Setup heatmap for showing data
+
+            PARAMS
+
+            confusion_matrix:list, confusion matrix to be displayed in heatmap
+            title:str, title of graph
+
+        '''
         graph = Graphs.Graphs()
         graph.setup_heatmap(confusion_matrix, text)
         return graph.get_graph()

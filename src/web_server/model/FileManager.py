@@ -5,6 +5,14 @@ class FileManager:
         pass
 
     def read_csv(self, file:str):
+        '''
+            Reads csv given file name
+
+            PARAMS
+
+            file:str, file name
+
+        '''
         data_list = []
         file_path = "media/" + file
 
@@ -20,6 +28,14 @@ class FileManager:
             return data_list
     
     def cast_list(self, list:list):
+        '''
+            Cast a list of char to float
+
+            PARAMS
+
+            list:list, list of char
+
+        '''
         new_list = []
         for index in list:
             new_list.append(float(index))
